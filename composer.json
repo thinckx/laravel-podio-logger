@@ -1,0 +1,41 @@
+{
+    "name": "thinckx/laravel-podio-logger",
+    "description": "Write your Laravel log messages to a Podio app of your choice",
+    "type": "library",
+    "require": {
+        "php": ">= 7.3",
+        "illuminate/support": "^6",
+        "monolog/monolog": "^2",
+        "podio-community/podio-php": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "thomas_inckx",
+            "email": "thomas@thinckx.be"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ThomasInckx\\PodioLogger\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ThomasInckx\\PodioLogger\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ThomasInckx\\PodioLogger\\PodioLoggerServiceProvider"
+            ],
+            "aliases": {
+                "PodioLogger": "ThomasInckx\\PodioLogger\\PodioLogger"
+            }
+        }
+    }
+}
