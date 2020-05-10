@@ -6,6 +6,7 @@ use Podio;
 use Exception;
 use PodioItem;
 use PodioBadRequestError;
+use Illuminate\Support\Facades\Log;
 
 class PodioLogger
 {
@@ -104,13 +105,14 @@ class PodioLogger
             'fields'    =>  [
                 $this->config['keys']['level']     =>  $this->level ?? "Unknown",
                 $this->config['keys']['message']   =>  $this->message ?? "Unknown",
-                $this->config['keys']['app_name']  =>  $this->config['app_name']
+                $this->config['keys']['app_name']  =>  $this->config['app_name'] ?? "Unknown"
             ]
         ];
 
         try {
             PodioItem::create($this->config['app_id'], $data);
         } catch (PodioBadRequestError $e) {
+            Log::channel('single')->error(['Error while writing to Podio' => $e]);
             throw $e;
         }
 
