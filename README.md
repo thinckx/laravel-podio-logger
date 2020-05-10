@@ -6,7 +6,7 @@ This package makes it easy to log your messages to a Podio app of your choice.
 
 ## Requirements
 
-* php >= 7.3
+* php >= 7.2
 * Laravel >= 6
 
 ## Installation instructions
