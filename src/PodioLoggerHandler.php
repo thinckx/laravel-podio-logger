@@ -11,7 +11,8 @@ class PodioLoggerHandler extends AbstractProcessingHandler
     {
         $level = strtolower(Logger::getLevelName($record['level']));
 
-        PodioLogger::log($record['message'], $level)
+        $message = is_string($record['message']) ? $record['message'] : json_encode($record['message']);
+        PodioLogger::log(json_encode($message, $level))
             ->send();
     }
 }
